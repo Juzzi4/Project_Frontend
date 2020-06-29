@@ -15,7 +15,7 @@ componentDidMount() {
                     </Link>
                     <h4 >
                         {this.props.musics.map(music =>
-                            <Music key={music.id} music={music} deleteMusic={this.props.deleteMusic} />)}
+                            <Music key={music.id} music={music} handleSaveClick={this.props.handleSaveClick} />)}
                     </h4>
                 </div>
             </div>

@@ -17,7 +17,7 @@ class HomePage extends Component {
     }
 
     patchMusics(m) {
-        fetch(URL + `${m.id}`, {
+        fetch(`${URL}/${m.id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
@@ -28,11 +28,24 @@ class HomePage extends Component {
     }
 
     handleSaveClick = (e, m) => {
-        e.stopPropagations()
+        e.stopPropagation()
         this.setState({
             musics: this.state.musics.map(music => {
                 if (music === m) {
                     music.saved = true
+                }
+                return music
+            })
+        })
+        this.patchMusics(m)
+    }
+
+    deleteMusic = (e, m) => {
+        e.stopPropagation()
+        this.setState({
+            musics: this.state.musics.map(music => {
+                if (music === m) {
+                    music.delete = true
                 }
                 return music
             })
@@ -48,14 +61,10 @@ class HomePage extends Component {
             })
     }
 
-    deleteMusic() {
-        
-    }
-
     render() {
         return (
             <div className="selection">
-                <MusicSelection musics={this.state.musics} deleteMusic={this.deleteMusics}/>
+                <MusicSelection musics={this.state.musics} handleSaveClick={this.handleSaveClick} deleteMusic={this.deleteMusics}/>
                 <MusicSearch musics={this.state.musics} handleSaveClick={this.handleSaveClick} />
             </div>
         )

@@ -19,9 +19,8 @@ class MusicSearch extends Component {
             <div className="blockmusic-wrapper">
                 <div className="blockmusic" >
                     <div className="select">
-                    <Music key={music.id} music={music} />
-                    <button className="btnnDiv" onClick={(e) => this.handleNextClick()}>Next Selection</button>
-                    <button className="btnDiv" onClick={(e) => this.props.handleSaveClick(e, music)}>Save to Cart</button>
+                    <Music key={music.id} music={music} handleSaveClick={this.props.handleSaveClick} deleteMusic={this.props.deleteMusic}/>
+                    <button className="btnDiv" onClick={(e) => this.props.handleSaveClick(e, music)}>Save to Favorites</button>
                 </div>
                 </div>
             </div>

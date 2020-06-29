@@ -47,9 +47,11 @@ function App() {
 
   const renderForm = () => {
     switch(form){
+
       case "login":
         return <LoginForm handleLogin={handleLogin}/>
-        break;
+        // break;
+
       default:
         return <SignInForm handleLogin={handleLogin}/>
     }

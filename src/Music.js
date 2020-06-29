@@ -23,23 +23,24 @@ const Music = (props) => {
                 {props.music.difficulty}
             </div>
             <div>
-                <button 
-                onClick={(e) => {
-                    e.stopPropagation();
-                    props.deleteMusic(props.music)}}
-                    >
-                        x
-                    </button>
-            </div>
-
-            <div>
                 <button
                 onClick={(e) => {
+                    
                     e.stopPropagation();
-                    props.handleSaveClick(props.music)}}
+                    props.handleSaveClick(e, props.music)}}
                     >
                         +
                 </button>
+            </div>
+
+            <div>
+                <button 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    props.deleteMusic(e, props.music)}}
+                    >
+                        x
+                    </button>
             </div>
 
         </div>
