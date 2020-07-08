@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MusicSelection from './MusicSelection.js'
 
-const URL = "http://localhost:3000/musics"
+const URL = "http://localhost:3000/users/1/musics"
 
 class SelectionPage extends Component {
     constructor() {
@@ -25,8 +25,8 @@ class SelectionPage extends Component {
 
     render() {
         return (
-            <div>
-                <MusicSelection musics={this.state.musics.filter(music => music.saved)} />
+            <div className="selections">
+                <MusicSelection musics={this.state.musics} deleteMusic={this.props.deleteMusic} />
             </div>
         )
     }

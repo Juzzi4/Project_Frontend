@@ -5,17 +5,31 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SelectionPage from './SelectionPage.js'
-import HomePage from './HomePage.js'
+import Navbar from './Navbar.js'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <div>
+    <div className="container vh-100">
+    <div className="row">
+      <div className="col-sm">
+        <Navbar />
+      </div>
+  </div>
+  <div className="row align-self-center bg-white">
+      <div className="col-10">
+       Search Bar
+      </div>
+      <div className="col-2">
+        Search
+      </div>
+      <Router>
+      <div className="col">
         <Route exact path="/" component={App} />
-        <Route path="/selection" component={SelectionPage} />
-        <Route path="/home" component={HomePage} />
+        <Route path="/selections" component={SelectionPage} />
       </div>
     </Router>
+  </div>
+</div>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -25,11 +25,10 @@ const Music = (props) => {
             <div>
                 <button
                 onClick={(e) => {
-                    
                     e.stopPropagation();
-                    props.handleSaveClick(e, props.music)}}
+                    props.handleSaveClick(e, props.music, props.user)}}
                     >
-                        +
+                        Save
                 </button>
             </div>
 
@@ -37,10 +36,10 @@ const Music = (props) => {
                 <button 
                 onClick={(e) => {
                     e.stopPropagation();
-                    props.deleteMusic(e, props.music)}}
+                    props.deleteMusic(e, props.music, props.user)}}
                     >
-                        x
-                    </button>
+                        Delete
+                </button>
             </div>
 
         </div>

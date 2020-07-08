@@ -1,8 +1,19 @@
 import React, {useState} from 'react'
 
 function SignInForm(props) {
+    const [first_name, setFirstName] = useState("")
+    const [last_name, setLastName] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [instrument, setInstrument] = useState("")
+    
+    const handleFirstNameChange = (evt) => {
+        setFirstName(evt.target.value)
+    }
+
+    const handleLastNameChange = (evt) => {
+        setLastName(evt.target.value)
+    }
 
     const handleUsernameChange = (evt) => {
         setUsername(evt.target.value)
@@ -10,6 +21,10 @@ function SignInForm(props) {
 
     const handlePasswordChange = (evt) => {
         setPassword(evt.target.value)
+    }
+
+    const handleInstrumentChange = (evt) => {
+        setInstrument(evt.target.value)
     }
 
     const handleSubmit = (evt) => {
@@ -21,8 +36,11 @@ function SignInForm(props) {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
+                first_name,
+                last_name,
                 username,
-                password
+                password,
+                instrument
             })
         })
         .then(resp => resp.json())
@@ -30,8 +48,11 @@ function SignInForm(props) {
             localStorage.setItem("token", data.jwt)
             props.handleLogin(data.user)
         })
+        setFirstName("")
+        setLastName("")
         setUsername("")
         setPassword("")
+        setInstrument("")
     }
     const formDivStyle = {
         margin: "auto",
@@ -44,6 +65,14 @@ function SignInForm(props) {
             <h1>Sign Up</h1>
             <form className="ui form" onSubmit={handleSubmit}>
                 <div className="field">
+                    <label>First Name</label>
+                    <input value={first_name} onChange={handleFirstNameChange} type="text" placeholder="First Name"/>  
+                </div>
+                <div className="field">
+                    <label>Last Name</label>
+                    <input value={last_name} onChange={handleLastNameChange} type="text" placeholder="Last Name"/>
+                </div>
+                <div className="field">
                     <label>Username</label>
                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
                 </div>
@@ -51,7 +80,11 @@ function SignInForm(props) {
                     <label>Password</label>
                     <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
                 </div>
-                
+                <div className="field">
+                    <label>Instrument</label>
+                    <input value={instrument} onChange={handleInstrumentChange} type="text" placeholder="instrument"/>
+                </div>
+
                 <button className="ui button" type="submit">Submit</button>
             </form>
         </div>

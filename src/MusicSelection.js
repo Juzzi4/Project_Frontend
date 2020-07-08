@@ -10,12 +10,12 @@ componentDidMount() {
         return (
             <div className="select">
                 <div className="nav">
-                    <Link to={'/selection'} >
-                        My Selections
+                    <Link to={'/'} >
+                        Search Results
                     </Link>
                     <h4 >
                         {this.props.musics.map(music =>
-                            <Music key={music.id} music={music} handleSaveClick={this.props.handleSaveClick} />)}
+                            <Music key={music.id} music={music} {...this.props} />)}
                     </h4>
                 </div>
             </div>

@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import MusicSelection from './MusicSelection.js'
 import MusicSearch from './MusicSearch.js'
 
-const URL = "http://localhost:3000/musics"
-
+const listURL = "http://localhost:3000/musics"
+const u = "1"
+const apiURL = "http://localhost:3000/"
 class HomePage extends Component {
     constructor() {
         super();
@@ -16,18 +17,17 @@ class HomePage extends Component {
         this.getMusics()
     }
 
-    patchMusics(m) {
-        fetch(`${URL}/${m.id}`, {
-            method: 'PATCH',
+    patchMusics(m, u) {
+        fetch(`${apiURL}users/${u}/musics/${m.id}`, {
+            method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({ saved: true})
         })
     }
 
-    handleSaveClick = (e, m) => {
+    handleSaveClick = (e, m, u) => {
         e.stopPropagation()
         this.setState({
             musics: this.state.musics.map(music => {
@@ -37,10 +37,10 @@ class HomePage extends Component {
                 return music
             })
         })
-        this.patchMusics(m)
+        this.patchMusics(m, u)
     }
 
-    deleteMusic = (e, m) => {
+    deleteMusic = (e, m, u) => {
         e.stopPropagation()
         this.setState({
             musics: this.state.musics.map(music => {
@@ -50,11 +50,11 @@ class HomePage extends Component {
                 return music
             })
         })
-        this.patchMusics(m)
+        this.patchMusics(m, u)
     }
 
     getMusics() {
-        fetch(URL)
+        fetch(listURL)
             .then(r => r.json())
             .then(musics => {
                 this.setState({ musics: musics})
@@ -63,9 +63,9 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div className="selection">
-                <MusicSelection musics={this.state.musics} handleSaveClick={this.handleSaveClick} deleteMusic={this.deleteMusics}/>
-                <MusicSearch musics={this.state.musics} handleSaveClick={this.handleSaveClick} />
+            <div>
+                <MusicSelection user={u} musics={this.state.musics} handleSaveClick={this.handleSaveClick} deleteMusic={this.deleteMusic}/>
+                <MusicSearch user={u} musics={this.state.musics} handleSaveClick={this.handleSaveClick} deleteMusic={this.deleteMusic} />
             </div>
         )
     }
