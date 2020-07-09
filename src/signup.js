@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { navigate } from "@reach/router"
 
 function SignInForm(props) {
     const [first_name, setFirstName] = useState("")
@@ -45,8 +46,9 @@ function SignInForm(props) {
         })
         .then(resp => resp.json())
         .then(data => {
-            localStorage.setItem("token", data.jwt)
-            props.handleLogin(data.user)
+            const user = data.user;
+            localStorage.setItem("user", JSON.stringify(user));
+            navigate(`/`)
         })
         setFirstName("")
         setLastName("")
@@ -74,15 +76,15 @@ function SignInForm(props) {
                 </div>
                 <div className="field">
                     <label>Username</label>
-                    <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
+                    <input value={username} onChange={handleUsernameChange} type="text" placeholder="Username"/>
                 </div>
                 <div className="field">
                     <label>Password</label>
-                    <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
+                    <input value={password} onChange={handlePasswordChange} type="password" placeholder="Password"/>
                 </div>
                 <div className="field">
                     <label>Instrument</label>
-                    <input value={instrument} onChange={handleInstrumentChange} type="text" placeholder="instrument"/>
+                    <input value={instrument} onChange={handleInstrumentChange} type="text" placeholder="Instrument"/>
                 </div>
 
                 <button className="ui button" type="submit">Submit</button>

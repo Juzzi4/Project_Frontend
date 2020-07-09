@@ -1,11 +1,49 @@
-import React from 'react';
+import React , { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router } from "@reach/router"
 import SelectionPage from './SelectionPage.js'
 import Navbar from './Navbar.js'
+import SignUp from './signup.js'
+import Login from './login.js'
+import MusicSearch from './MusicSearch.js'
+
+const listURL = "http://localhost:3000/musics"
+
+class Index extends Component {
+  constructor() {
+    super();
+    this.state = {
+        musics: [],
+    }
+}
+  
+  componentDidMount() {
+    this.getMusics()
+  }
+
+
+
+getMusics() {
+    fetch(listURL)
+        .then(r => r.json())
+        .then(musics => {
+            this.setState({ musics: musics})
+        })
+    }
+
+  render (props) {
+    return(
+      <Router>
+      <MusicSearch path="/" musics={this.state.musics} />
+      <SelectionPage path="/selection" />
+      <SignUp path="/signup" />
+      <Login path="/login" />
+      </Router>
+    )
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,18 +54,9 @@ ReactDOM.render(
       </div>
   </div>
   <div className="row align-self-center bg-white">
-      <div className="col-10">
-       Search Bar
-      </div>
-      <div className="col-2">
-        Search
-      </div>
-      <Router>
       <div className="col">
-        <Route exact path="/" component={App} />
-        <Route path="/selections" component={SelectionPage} />
+        <Index />
       </div>
-    </Router>
   </div>
 </div>
   </React.StrictMode>,

@@ -9,27 +9,16 @@ class MusicSearch extends Component {
         }
     }
 
-    handleNextClick = event => {
-        this.setState({ index: this.setState.index = 1 })
-    }
-
     renderMusic() {
-        let music = this.props.musics.filter(m => m.id === this.setState.index)
-        return music.map(music => 
-            <div className="blockmusic-wrapper">
-                <div className="blockmusic" >
-                    <div className="select">
-                        <Music key={music.id} music={music} {...this.props}/>
-                    </div>
-                </div>
-            </div>
-            )
+        return this.props.musics.map(music => 
+            <Music key={music.id} music={music} />
+        )
     }
 
     render() {
         return (
             <div>
-                <h2>{this.renderMusic()}</h2>
+                <h2>{this.props && this.renderMusic()}</h2>
             </div>
         )
     }

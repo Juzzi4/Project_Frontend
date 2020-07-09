@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import MusicSelection from './MusicSelection.js'
 
-const URL = "http://localhost:3000/users/1/musics"
-
 class SelectionPage extends Component {
     constructor() {
         super();
+        let user = localStorage.getItem("user");
+        if(user) {
+            user = JSON.parse(user)
+        }
+
         this.state = {
             musics: [],
+            userId: (user && user.id) || null
         }
     }
 
@@ -16,7 +20,7 @@ class SelectionPage extends Component {
     }
 
     getMusics = () => {
-        fetch(URL)
+        fetch(`http://localhost:3000/users/${this.state.userId}/musics`)
             .then(r => r.json())
             .then(musics => {
                 this.setState({ musics: musics})
