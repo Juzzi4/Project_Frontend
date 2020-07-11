@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { navigate } from "@reach/router"
 
 function LoginForm(props){
     const [username, setUsername] = useState("")
@@ -27,8 +28,9 @@ function LoginForm(props){
         })
         .then(resp => resp.json())
         .then(data => {
-            localStorage.setItem("token", data.jwt)
-            props.handleLogin(data.user)
+            const user = data.user;
+            localStorage.setItem("user", JSON.stringify(user))
+            navigate(`/`)
         })
         setUsername("")
         setPassword("")
