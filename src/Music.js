@@ -61,7 +61,29 @@ class Music extends Component {
                         <p className="card-text">{music.arranger}</p>
                         <p className="card-text">{music.publisher}</p>
                     </div>
-                <div className="card-footer bg-transparent border-info">Save</div>
+                <div className="card-footer bg-transparent border-info">
+                <div>
+                    <button type="button" className="btn btn-info"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        this.handleSaveClick(e, music, this.state.userId)}}
+                        >
+                            Save
+                    </button>
+                </div>
+
+                    <div> {
+                    this.state.userId && <button type="button" className="btn btn-info"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        this.deleteMusic(e, music, this.state.userId);
+                    }}
+                        >
+                            Delete
+                    </button>
+                    }
+                    </div>
+                </div>
             </div>
         </div>
         );
