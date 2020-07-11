@@ -21,7 +21,7 @@ const Navbar = (props) => {
         <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="https://youtu.be/oHg5SJYRHA0">Link</a>
+        <a className="nav-link" href="/browse">Browse</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/login">Log in</a>
@@ -36,8 +36,7 @@ const Navbar = (props) => {
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           <a className="dropdown-item" href="/selection">My Saves</a>
           <a className="dropdown-item" href="#">My Account</a>
-          <div className="dropdown-divider"></div>
-          <a className="dropdown-item" href="#">Log out</a>
+          <a className="dropdown-item" href="https://youtu.be/oHg5SJYRHA0">Click Me</a>
         </div>
       </li>
     </ul>

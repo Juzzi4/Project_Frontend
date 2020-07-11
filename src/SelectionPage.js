@@ -29,7 +29,7 @@ class SelectionPage extends Component {
 
     render() {
         return (
-            <div className="selections">
+            <div className="min-vh-100">
                 <MusicSelection musics={this.state.musics} deleteMusic={this.props.deleteMusic} />
             </div>
         )

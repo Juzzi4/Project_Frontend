@@ -52,28 +52,29 @@ class Music extends Component {
     render() {
         const music = this.props.music;
         return (
-        <div className="card-deck">
-            <div className="card border-info mb-3">
-                <div className="card-header bg-transparent border-info">{music.instrument}, {music.difficulty}</div>
-                    <div className="card-body text-info">
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <div className="card-header bg-transparent border-info"><span>{music.instrument}</span><span className="diff-display">{music.difficulty}</span></div>
+                    <div className="card-body text-dark">
                         <p className="card-text">{music.piece}</p>
                         <p className="card-text">{music.composer}</p>
                         <p className="card-text">{music.arranger}</p>
                         <p className="card-text">{music.publisher}</p>
                     </div>
                 <div className="card-footer bg-transparent border-info">
-                <div>
-                    <button type="button" className="btn btn-info"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        this.handleSaveClick(e, music, this.state.userId)}}
-                        >
-                            Save
-                    </button>
-                </div>
+                <div class="btn-group" role="group">
+                    <div>
+                        <button type="button" className="btn btn-outline-dark"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            this.handleSaveClick(e, music, this.state.userId)}}
+                            >
+                                Save
+                        </button>
+                    </div>
 
                     <div> {
-                    this.state.userId && <button type="button" className="btn btn-info"
+                    this.state.userId && <button type="button" className="btn btn-outline-dark"
                     onClick={(e) => {
                         e.stopPropagation();
                         this.deleteMusic(e, music, this.state.userId);
@@ -82,6 +83,7 @@ class Music extends Component {
                             Delete
                     </button>
                     }
+                    </div>
                     </div>
                 </div>
             </div>

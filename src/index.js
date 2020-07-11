@@ -17,7 +17,7 @@ class Index extends Component {
     super();
     this.state = {
         musics: [],
-        limit: 20,
+        limit: 15,
         offset: 0,
     }
 }
@@ -44,8 +44,12 @@ class Index extends Component {
     this.getMusics(limit, newOffset)
   }
 
-getMusics(limit, offset) {
-    fetch(`${listURL}?limit=${limit}&offset=${offset}`)
+getMusics(limit, offset, search) {
+  let searchTerm = "";
+  if (search) {
+    searchTerm = `search=${search}&`
+  }
+    fetch(`${listURL}?${searchTerm}limit=${limit}&offset=${offset}`)
         .then(r => r.json())
         .then(musics => {
             this.setState({ musics: musics})
@@ -56,11 +60,11 @@ getMusics(limit, offset) {
   render () {
     return(
       <Router>
-      <MusicSearch path="/" />
-      <MusicBrowse path="/browse" offset={this.state.offset} musics={this.state.musics} handleNext={this.handleNext} handlePrevious={this.handlePrevious} />
-      <SelectionPage path="/selection" />
-      <SignUp path="/signup" />
-      <Login path="/login" />
+        <MusicSearch path="/"/>
+        <MusicBrowse path="/browse" offset={this.state.offset} musics={this.state.musics} handleNext={this.handleNext} handlePrevious={this.handlePrevious} />
+        <SelectionPage path="/selection" />
+        <SignUp path="/signup" />
+        <Login path="/login" />
       </Router>
     )
   }
@@ -74,7 +78,7 @@ ReactDOM.render(
         <Navbar />
       </div>
   </div>
-  <div className="row align-self-center">
+  <div className="row">
       <div className="col">
         <Index />
       </div>
