@@ -7,8 +7,10 @@ class Music extends Component {
     constructor() {
         super();
         let user = localStorage.getItem("user");
-        if(user) {
+        if(user && user !== "undefined") {
             user = JSON.parse(user)
+        } else {
+            localStorage.removeItem("user");
         }
 
         this.state = {
@@ -28,7 +30,6 @@ class Music extends Component {
     }
 
     deleteMusics(m, u) {
-        debugger
         fetch(`${apiURL}users/${u}/musics/${m.id}`, {
             method: 'DELETE',
             headers: {
@@ -50,52 +51,21 @@ class Music extends Component {
 
     render() {
         const music = this.props.music;
-
         return (
-            <div >
-                <div>
-                    <h3> {music.instrument} </h3>
-                </div>
-                <div>
-                    <h1> {music.piece} </h1>
-                </div>
-                <div>
-                    <h2> {music.composer} </h2>
-                </div>
-                <div>
-                    {music.arranger}
-                </div>
-                <div>
-                    <h3> {music.publisher} </h3>
-                </div>
-                <div>
-                    {music.difficulty}
-                </div>
-                <div>
-                    <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        this.handleSaveClick(e, music, this.state.userId)}}
-                        >
-                            Save
-                    </button>
-                </div>
-    
-                <div> {
-                    this.state.userId && <button 
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        this.deleteMusic(e, music, this.state.userId);
-                    }}
-                        >
-                            Delete
-                    </button>
-                    }
-                </div>
-    
+        <div className="card-deck">
+            <div className="card border-info mb-3">
+                <div className="card-header bg-transparent border-info">{music.instrument}, {music.difficulty}</div>
+                    <div className="card-body text-info">
+                        <p className="card-text">{music.piece}</p>
+                        <p className="card-text">{music.composer}</p>
+                        <p className="card-text">{music.arranger}</p>
+                        <p className="card-text">{music.publisher}</p>
+                    </div>
+                <div className="card-footer bg-transparent border-info">Save</div>
             </div>
+        </div>
         );
     }
 }
 
-export default Music
+export default Music;
