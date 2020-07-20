@@ -17,7 +17,7 @@ class Index extends Component {
     super();
     this.state = {
         musics: [],
-        limit: 15,
+        limit: 12,
         offset: 0,
     }
 }
@@ -44,6 +44,15 @@ class Index extends Component {
     this.getMusics(limit, newOffset)
   }
 
+  isLoggedIn = () => {
+    let user = localStorage.getItem("user");
+        if(user && user !== "undefined") {
+            console.log(user);
+        } else {
+            localStorage.removeItem("user");
+        }
+  }
+
 getMusics(limit, offset, search) {
   let searchTerm = "";
   if (search) {
@@ -59,6 +68,12 @@ getMusics(limit, offset, search) {
 
   render () {
     return(
+      <div>
+        <div className="row">
+      <div className="col-sm">
+        <Navbar isLoggedIn={this.isLoggedIn}/>
+      </div>
+    </div>  
       <Router>
         <MusicSearch path="/"/>
         <MusicBrowse path="/browse" offset={this.state.offset} musics={this.state.musics} handleNext={this.handleNext} handlePrevious={this.handlePrevious} />
@@ -66,6 +81,7 @@ getMusics(limit, offset, search) {
         <SignUp path="/signup" />
         <Login path="/login" />
       </Router>
+      </div>
     )
   }
 }
@@ -73,11 +89,6 @@ getMusics(limit, offset, search) {
 ReactDOM.render(
   <React.StrictMode>
     <div className="container fill">
-    <div className="row">
-      <div className="col-sm">
-        <Navbar />
-      </div>
-  </div>
   <div className="row">
       <div className="col">
         <Index />

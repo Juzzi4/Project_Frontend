@@ -35,7 +35,10 @@ class Music extends Component {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
-            },
+            }
+        })
+        .then(() => {
+            this.props.getMusics()
         })
     }
 
@@ -52,8 +55,8 @@ class Music extends Component {
     render() {
         const music = this.props.music;
         return (
-            <div class="col mb-4">
-                <div class="card h-100">
+            <div className="col mb-4">
+                <div className="card h-100">
                     <div className="card-header bg-transparent border-info"><span>{music.instrument}</span><span className="diff-display">{music.difficulty}</span></div>
                     <div className="card-body text-dark">
                         <p className="card-text">{music.piece}</p>
@@ -62,7 +65,7 @@ class Music extends Component {
                         <p className="card-text">{music.publisher}</p>
                     </div>
                 <div className="card-footer bg-transparent border-info">
-                <div class="btn-group" role="group">
+                <div className="btn-group" role="group">
                     <div>
                         <button type="button" className="btn btn-outline-dark"
                         onClick={(e) => {

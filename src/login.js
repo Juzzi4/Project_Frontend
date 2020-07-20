@@ -30,10 +30,7 @@ function LoginForm(props){
         .then(data => {
             const user = data.user;
             localStorage.setItem("user", JSON.stringify(user))
-            // else {
-            //     localStorage.removeItem("user");
-            // }
-            navigate(`/`)
+            navigate(`/browse`)
         })
         setUsername("")
         setPassword("")

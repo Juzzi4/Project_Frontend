@@ -19,11 +19,12 @@ class MusicBrowse extends Component {
         return (
             <div className="min-vh-100">
                 <div className="p-3 mb-2 h-100">
-                    <div class="container">
-                        <div class="row row-cols-1 row-cols-md-3">
+                    <div className="container">
+                        <div className="row row-cols-1 row-cols-md-3">
                             {this.props && this.renderMusic()}
                         </div>
                     </div>
+                    <div className="btn-group-vertical">
                         { this.props.musics.length > 0 && <button type="button" className="btn btn-outline-dark"
                         onClick={(e) => {
                             e.stopPropagation()
@@ -32,13 +33,14 @@ class MusicBrowse extends Component {
                         >Next</button>
                         }
 
-                        { this.props.offset !== 0 && <button type="button" class="btn btn-outline-danger"
+                        { this.props.offset !== 0 && <button type="button" className="btn btn-outline-dark"
                         onClick={(e) => {
                             e.stopPropagation()
                             this.props.handlePrevious()
                         }}
                         >Previous</button>
                             }
+                    </div>
                </div>
             </div>
         )
