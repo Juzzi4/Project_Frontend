@@ -35,7 +35,10 @@ class Music extends Component {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
-            },
+            }
+        })
+        .then(() => {
+            this.props.getMusics()
         })
     }
 
@@ -52,16 +55,40 @@ class Music extends Component {
     render() {
         const music = this.props.music;
         return (
-        <div className="card-deck">
-            <div className="card border-info mb-3">
-                <div className="card-header bg-transparent border-info">{music.instrument}, {music.difficulty}</div>
-                    <div className="card-body text-info">
+            <div className="col mb-4">
+                <div className="card h-100">
+                    <div className="card-header bg-transparent border-info"><span>{music.instrument}</span><span className="diff-display">{music.difficulty}</span></div>
+                    <div className="card-body text-dark">
                         <p className="card-text">{music.piece}</p>
                         <p className="card-text">{music.composer}</p>
                         <p className="card-text">{music.arranger}</p>
                         <p className="card-text">{music.publisher}</p>
                     </div>
-                <div className="card-footer bg-transparent border-info">Save</div>
+                <div className="card-footer bg-transparent border-info">
+                <div className="btn-group" role="group">
+                    <div>
+                        <button type="button" className="btn btn-outline-dark"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            this.handleSaveClick(e, music, this.state.userId)}}
+                            >
+                                Save
+                        </button>
+                    </div>
+
+                    <div> {
+                    this.state.userId && <button type="button" className="btn btn-outline-dark"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        this.deleteMusic(e, music, this.state.userId);
+                    }}
+                        >
+                            Delete
+                    </button>
+                    }
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
         );

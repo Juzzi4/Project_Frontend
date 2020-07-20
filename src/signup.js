@@ -63,33 +63,35 @@ function SignInForm(props) {
     }
     
     return(
+        <div className="min-vh-100">
         <div style={formDivStyle}>
             <h1>Sign Up</h1>
             <form className="ui form" onSubmit={handleSubmit}>
                 <div className="field">
-                    <label>First Name</label>
+                    <label>First Name:</label>
                     <input value={first_name} onChange={handleFirstNameChange} type="text" placeholder="First Name"/>  
                 </div>
                 <div className="field">
-                    <label>Last Name</label>
+                    <label>Last Name:</label>
                     <input value={last_name} onChange={handleLastNameChange} type="text" placeholder="Last Name"/>
                 </div>
                 <div className="field">
-                    <label>Username</label>
+                    <label>Username:</label>
                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="Username"/>
                 </div>
                 <div className="field">
-                    <label>Password</label>
+                    <label>Password:</label>
                     <input value={password} onChange={handlePasswordChange} type="password" placeholder="Password"/>
                 </div>
                 <div className="field">
-                    <label>Instrument</label>
+                    <label>Instrument:</label>
                     <input value={instrument} onChange={handleInstrumentChange} type="text" placeholder="Instrument"/>
                 </div>
 
                 <button className="ui button" type="submit">Submit</button>
             </form>
         </div>
+    </div>
     )
 }
 

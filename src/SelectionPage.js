@@ -29,8 +29,8 @@ class SelectionPage extends Component {
 
     render() {
         return (
-            <div className="selections">
-                <MusicSelection musics={this.state.musics} deleteMusic={this.props.deleteMusic} />
+            <div className="min-vh-100">
+                <MusicSelection musics={this.state.musics} deleteMusic={this.props.deleteMusic} getMusics={this.getMusics} />
             </div>
         )
     }
