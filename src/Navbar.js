@@ -23,15 +23,14 @@ const Navbar = (props) => {
       <li className="nav-item active">
         <a className="nav-link" href="/browse">Browse</a>
       </li>
-      {props.isLoggedIn !== undefined ? 
+      {/* {props.isLoggedIn !== undefined ? 
         <li className="nav-item active">
-        <a className="nav-link" onClick="">Log out</a>
+        <a className="nav-link" href="">Log out</a>
       </li>
-      :
+      : */}
       <li className="nav-item active">
         <a className="nav-link" href="/login">Log in</a>
       </li>
-      }
       <li className="nav-item active">
         <a className="nav-link" href="/signup">Sign Up</a>
       </li>
