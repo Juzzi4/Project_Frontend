@@ -15,7 +15,7 @@ function LoginForm(props){
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        fetch(`http://localhost:3000/login`, {
+        fetch(`https://glacial-shore-77535.herokuapp.com/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

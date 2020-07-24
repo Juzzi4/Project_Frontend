@@ -1,7 +1,7 @@
 import React, { Component }from 'react';
 import './App.css';
 
-const apiURL = "http://localhost:3000/"
+const apiURL = "https://glacial-shore-77535.herokuapp.com/"
 
 class Music extends Component {
     constructor() {

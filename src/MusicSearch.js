@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MusicBrowse from './MusicBrowse.js'
 
-const listURL = "http://localhost:3000/musics"
+const listURL = "https://glacial-shore-77535.herokuapp.com/musics"
 
 class MusicSearch extends Component {
     constructor() {
