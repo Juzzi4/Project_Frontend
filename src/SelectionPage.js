@@ -20,7 +20,7 @@ class SelectionPage extends Component {
     }
 
     getMusics = () => {
-        fetch(`http://localhost:3000/users/${this.state.userId}/musics`)
+        fetch(`https://glacial-shore-77535.herokuapp.com/users/${this.state.userId}/musics`)
             .then(r => r.json())
             .then(musics => {
                 this.setState({ musics: musics})
