@@ -58,9 +58,9 @@ class MusicSearch extends Component {
                 <div className="jumbotron jumbotron-fluid">
                     <div className="container">
                         <h1 className="display-4">Welcome to Music Searcher</h1>
-                        <p className="lead">Search for any beginner or advanced level of music. The level of rating is based 1 to 5 where 1 is the easiest and 5 is the hardest. 
-                        When you search, make sure the instrument or instrument groups are capitalized and spelled correct or you wont find what you find exactly what you are looking for. 
-                        If you would like to browse the selections the just click the search button with nothing in the search bar.</p>
+                        <p className="lead">Search for any beginner or advanced level of music. The level of rating is based 1 to 5 where 5 is the easiest and 1 is the hardest. 
+                        When you search, make sure what you are searching for is capitalized and spelled correct or you wont find what you find exactly what you are looking for. 
+                        If you would like to browse the entire selection then just click the search button with nothing in the search bar.</p>
                     </div>
                     </div>
                 <div className="input-group mb-5">

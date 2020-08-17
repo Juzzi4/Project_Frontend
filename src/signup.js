@@ -88,7 +88,7 @@ function SignInForm(props) {
                     <input value={instrument} onChange={handleInstrumentChange} type="text" placeholder="Instrument"/>
                 </div>
 
-                <button className="ui button" type="submit">Submit</button>
+                <button className="ui button" type="submit">Sign Up</button>
             </form>
         </div>
     </div>
