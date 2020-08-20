@@ -30,7 +30,7 @@ function LoginForm(props){
         .then(data => {
             const user = data.user;
             localStorage.setItem("user", JSON.stringify(user))
-            navigate(`/browse`)
+            navigate(`/selection`)
         })
         setUsername("")
         setPassword("")
@@ -44,17 +44,17 @@ function LoginForm(props){
         <div className="min-vh-100">
             <div style={formDivStyle}>
             <h1>Log In</h1>
-            <form class="ui form" onSubmit={handleSubmit}>
-                <div class="field">
+            <form className="ui form" onSubmit={handleSubmit}>
+                <div className="field">
                     <label>Username:</label>
                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="Username"/>
                 </div>
-                <div class="field">
+                <div className="field">
                     <label>Password:</label>
                     <input value={password} onChange={handlePasswordChange} type="password" placeholder="Password"/>
                 </div>
                 
-                <button class="ui button" type="submit">Submit</button>
+                <button className="ui button" type="submit">Submit</button>
             </form>
         </div>
         </div>

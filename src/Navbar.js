@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const Navbar = (props) => {
+const [josh,setJosh] = useState("")
     return (
         <nav className="navbar navbar-expand-lg navbar navbar-dark bg-info">
   <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-music-note-beamed" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -23,11 +24,16 @@ const Navbar = (props) => {
       <li className="nav-item active">
         <a className="nav-link" href="/browse">Browse</a>
       </li>
-      {props.isLoggedIn !== undefined? 
+      {props.isLoggedIn()? 
       <li className="nav-item active">
-        <a className="nav-link" href="">Log out</a>
+        <a className="nav-link" href= "#" onClick={(e) => {
+              e.stopPropagation()
+              localStorage.removeItem("user")
+              setJosh();
+          }}>Log out</a>
       </li>
       :
+      // Hard refresh need to change it
       <li className="nav-item active">
         <a className="nav-link" href="/login">Log in</a>
       </li>

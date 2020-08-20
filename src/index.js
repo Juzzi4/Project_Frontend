@@ -45,12 +45,15 @@ class Index extends Component {
   }
 
   isLoggedIn = () => {
+    let isUserLoggedIn;
     let user = localStorage.getItem("user");
         if(user && user !== "undefined") {
             console.log(user);
+            isUserLoggedIn = true;
         } else {
-            localStorage.removeItem("user");
+            isUserLoggedIn = false;
         }
+      return isUserLoggedIn; 
   }
 
 getMusics(limit, offset, search) {
