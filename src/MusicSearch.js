@@ -66,7 +66,7 @@ class MusicSearch extends Component {
                 <div className="input-group mb-5">
                     <input id="search-bar" type="text" className="form-control" placeholder="Search Instruments or Composers" aria-label="Search" aria-describedby="button-addon2"></input>
                 <div className="input-group-append">
-                    <button className="btn btn-outline-dark" type="button" id="button-addon2"
+                    <button className="btn btn-outline-dark" type="submit" id="button-addon2"
                         onClick={(e) => {
                             e.stopPropagation()
                             this.handleSearch(e)
