@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MusicBrowse from './MusicBrowse.js'
 
-const listURL = "https://glacial-shore-77535.herokuapp.com/musics"
+const listURL = "http://localhost:3000/musics"
 
 class MusicSearch extends Component {
     constructor() {
@@ -38,7 +38,7 @@ class MusicSearch extends Component {
         this.setState({ offset: newOffset})
         this.searchMusics(limit, newOffset, search)
       }
-
+// Need to change search parameters
       searchMusics(limit, offset, search) {
         let searchTerm = "";
         if (search) {

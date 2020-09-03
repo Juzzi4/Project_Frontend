@@ -30,7 +30,7 @@ function SignInForm(props) {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        fetch(`https://glacial-shore-77535.herokuapp.com/users`, {
+        fetch(`http://localhost:3000/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

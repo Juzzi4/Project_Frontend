@@ -1,7 +1,7 @@
 import React, { Component }from 'react';
 import './App.css';
 
-const apiURL = "https://glacial-shore-77535.herokuapp.com/"
+const apiURL = "http://localhost:3000/"
 
 class Music extends Component {
     constructor() {
@@ -51,7 +51,7 @@ class Music extends Component {
         e.stopPropagation()
         this.deleteMusics(m, u)
     }
-
+// Need to change how it looks
     render() {
         const music = this.props.music;
         return (

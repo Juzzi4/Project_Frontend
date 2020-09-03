@@ -10,7 +10,7 @@ import Login from './login.js'
 import MusicBrowse from './MusicBrowse.js'
 import MusicSearch from './MusicSearch.js'
 
-const listURL = "https://glacial-shore-77535.herokuapp.com/musics"
+const listURL = "http://localhost:3000/musics"
 
 class Index extends Component {
   constructor() {
